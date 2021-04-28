@@ -56,6 +56,8 @@ class Admin extends CI_Controller
         $where = array('id' => $id);
         $detail = $this->m_siswa->detail_siswa($id);
         $data['detail'] = $detail;
+		// var_dump($data);
+		// die();
         $this->load->view('admin/detail_siswa', $data);
     }
 

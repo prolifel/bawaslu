@@ -140,11 +140,16 @@
                                     </div>
 
                                     <div class="card-body">
-                                        <form action="<?= base_url('user/registration_act') ?>" method="post">
+                                        <?= form_open_multipart(base_url('user/registration_act')); ?>
                                             <div class="form-group">
                                                 <label for="nama_lengkap" class="label-font-register">Nama Kegiatan</label>
                                                 <input type="text" autocomplete="off" class="form-control effect-9" name="nama" id="nama_lengkap" value="<?= set_value('nama'); ?>">
                                                 <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="foto" class="label-font-register">Foto Kegiatan (maksimal berukuran 4mb)</label>
+												<input type="file" name="foto" class="form-control effect-9" id="foto" accept="image/*" required>
+                                                <?= form_error('foto', '<small class="text-danger">', '</small>'); ?>
                                             </div>
                                             <div class="form-group">
                                                 <label for="email" class="label-font-register">Tanggal</label>
@@ -157,7 +162,6 @@
                                                     <input type="Text" class="form-control" name="is_active" id="password">
                                                     <?= form_error('is_active', '<small class="text-danger">', '</small>'); ?>
                                                 </div>
-
                                             </div>
                                             <div class="form-check">
                                                 <input class="form-check-input checkbox" type="checkbox" id="defaultCheck1" onchange="document.getElementById('btnsubmit').disabled = !this.checked;">

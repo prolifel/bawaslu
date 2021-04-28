@@ -20,6 +20,13 @@
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
     <link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
 
+	<style>
+		.card-img-top {
+			width: 100%;
+			height: 40vw;
+			object-fit: cover;
+		}
+	</style>
 </head>
 
 <body>
@@ -130,42 +137,38 @@
                                             ingin melanjutkan ⭢</a>
                                         </div>
                                     </div>
-                                    <div class="">
-                                        <div class="hero text-white hero-bg-image" data-background="<?= base_url('assets/') ?>stisla-assets/img/unsplash/eberhard-grossgasteiger-1207565-unsplash.jpg">
-                                            <div class="col-md-4 mx-auto rounded-circle bg-white p-3" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
-                                                <img src="<?= base_url() . 'assets/profile_picture/' . $detail->image; ?>" class="card-img-top  rounded-circle img-responsive" alt="...">
-                                            </div>
-                                        </div>
-                                    </div>
                                     <br>
-                                    <div class="col-md-12 bg-white p-3" id="detail" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
-                                        <h1 class="font-weight-bold card-title text-center" style="color: black;">Detail Kegiatan </h1>
-                                        <p class="text-center" style="line-height: 5px;">Berikut data detail yang terdapat di
-                                            database, meliputi Nama Kegiatan, Tanggal,
-                                            Photo, Divisi
-                                        dan Date Created.</p>
-                                        <hr>
-                                        <table style="width: 100%" class="container text-center">
-                                            <tbody>
-                                                <tr style="border-bottom: 0.5px solid #6c757d;">
-                                                    <td><span class="font-weight-bold">Nama Kegiatan :</span></td>
-                                                    <td> <?= $detail->nama ?></td>
-                                                </tr>
-                                                <tr style="border-bottom: 0.5px solid #6c757d;">
-                                                    <td><span class="font-weight-bold">Tanggal Kegiatan :</span></td>
-                                                    <td> <?= $detail->email ?></td>
-                                                </tr>
-                                                
-                                                <tr style="border-bottom: 0.5px solid #6c757d;">
-                                                    <td><span class="font-weight-bold">Divisi :</span></td>
-                                                    <td><?= $detail->is_active ?></td>
-                                                </tr>
-                                                
-                                            </tbody>
-                                        </table>
-                                        <p style="font-weight:500px!important;font-size:18px;text-align:justify;" class="text-justify">
-                                        </p>
-                                        <a href="<?= base_url('admin/data_siswa') ?>" class="btn btn-success btn-block">Kembali</a>
+                                    <div class="card d-flex" id="detail">
+										<img class="card-img-top flex-fill" src="<?= base_url($detail->image) ?>">
+										<div class="card-body">
+											<h5 class="card-title">Detail Kegiatan </h5>
+											<p class="card-text">Berikut data detail yang terdapat di
+												database, meliputi Nama Kegiatan, Tanggal,
+												Photo, Divisi
+											dan Date Created.</p>
+											<hr>
+											<table style="width: 100%" class="container text-center">
+												<tbody>
+													<tr style="border-bottom: 0.5px solid #6c757d;">
+														<td><span class="font-weight-bold">Nama Kegiatan :</span></td>
+														<td> <?= $detail->nama ?></td>
+													</tr>
+													<tr style="border-bottom: 0.5px solid #6c757d;">
+														<td><span class="font-weight-bold">Tanggal Kegiatan :</span></td>
+														<td> <?= $detail->email ?></td>
+													</tr>
+													
+													<tr style="border-bottom: 0.5px solid #6c757d;">
+														<td><span class="font-weight-bold">Divisi :</span></td>
+														<td><?= $detail->is_active ?></td>
+													</tr>
+													
+												</tbody>
+											</table>
+											<p style="font-weight:500px!important;font-size:18px;text-align:justify;" class="text-justify">
+											</p>
+											<a href="<?= base_url('admin/data_siswa') ?>" class="btn btn-success btn-block">Kembali</a>
+										</div>
                                     </div>
                                 </div>
                             </section>

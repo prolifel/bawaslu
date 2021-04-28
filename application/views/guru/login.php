@@ -42,8 +42,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
                         <a href="<?= base_url('welcome') ?>"> <img class="rounded mx-auto d-block mb-4" src="<?= base_url('assets/') ?>/img/bawaslu.png" alt="logo" width="150" class=" mb-5 mt-2"></a>
-                        <h4 class="text-dark font-weight-normal">Selamat datang di <span class="font-weight-bold">Bawaslu</span>
-                        </h4>
+                        <h4 class="text-dark font-weight-normal">Selamat datang di <span class="font-weight-bold">Bawaslu</span></h4>
                         <p class="text-muted">Sebelum masuk ke halaman User, anda harus login terlebih dahulu sebagai
                             User. silahkan isi data dibawah untuk melanjutkan.</p>
                         <form method="post" action="<?= base_url('welcome/guru') ?>" class="needs-validation" novalidate="">
@@ -70,10 +69,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                                 </button>
                             </div>
                         </form>
-                        <button type="submit" class="btn btn-block btn-outline-primary btn-lg btn-icon icon-right"
-                                    tabindex="4">
-                                   <a class="text-dark" href="<?=base_url('welcome/admin')?>"> Login U/ Admin </a>
-                                </button>
+                        <a class="btn btn-block btn-outline-primary btn-lg btn-icon icon-right" href="<?=base_url('welcome/admin')?>"> Login U/ Admin </a>
                     </div>
                 </div>
                 <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom" data-background="<?= base_url('assets/') ?>stisla-assets/img/unsplash/ss.jpg">

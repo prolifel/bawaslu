@@ -48,12 +48,14 @@ class User extends CI_Controller
         $this->load->view('template/footer');
     }
 
+	// Get tambah kegiatan
     public function registration()
     {
         $this->load->view('guru/registrationsiswa');
         
     }
 
+	// Post db kegiatan
     public function registration_act()
     {
         $this->form_validation->set_rules('nama', 'Nama', 'required|trim|min_length[4]', [
@@ -73,35 +75,37 @@ class User extends CI_Controller
         // ]);
 
         if ($this->form_validation->run() == false) {
-
             $this->load->view('guru/registrationsiswa');
-
         } else {
-            $email = $this->input->post('email', true);
-            $data = [
-                'nama' => htmlspecialchars($this->input->post('nama', true)),
-                'email' => htmlspecialchars($email),
-                'image' => 'default.jpg',
-                'is_active' => htmlspecialchars($this->input->post('is_active')),
-                
-            ];
+			// set config foto
+			// $config['file_name'] = $id;
+			$config['upload_path'] = './uploads/';
+			$config['allowed_types'] = 'jpg|jpeg|png';
+			$config['max_size'] = '5120';
+			$config['overwrite'] = TRUE;
 
-            //siapkan token
+			$this->load->library('upload', $config);
+			if($this->upload->do_upload('foto')){
+				$upload_data = $this->upload->data();
+				$path = './uploads/'.$upload_data['file_name'];
 
-            // $token = base64_encode(random_bytes(32));
-            // $user_token = [
-            //     'email' => $email,
-            //     'token' => $token,
-            //     'date_created' => time(),
-            // ];
+				$email = $this->input->post('email', true);
+				$data = [
+					'nama' => htmlspecialchars($this->input->post('nama', true)),
+					'email' => htmlspecialchars($email),
+					'image' => $path,
+					'is_active' => htmlspecialchars($this->input->post('is_active')),
+				];
+				print_r($data);
+				if($this->db->insert('siswa', $data)){
+					$this->session->set_flashdata('success-reg', 'Berhasil!');
+					redirect(base_url('admin/data_siswa'));
+				}else{
 
-            $this->db->insert('siswa', $data);
-            // $this->db->insert('token', $user_token);
-
-            // $this->_sendEmail($token, 'verify');
-
-            $this->session->set_flashdata('success-reg', 'Berhasil!');
-            redirect(base_url('admin/data_siswa'));
+				}
+			}else{
+				echo $this->upload->display_errors();
+			}
         }
     }
 

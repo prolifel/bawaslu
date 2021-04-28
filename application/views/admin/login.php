@@ -31,48 +31,43 @@
             <div class="d-flex flex-wrap align-items-stretch">
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
-                        <a  href="<?=base_url('welcome/admin')?>"> <img class="rounded mx-auto d-block mb-4"  src="<?=base_url('assets/')?>/img/bawaslu.png" alt="logo"
-                            width="150" class=" mb-5 mt-2"></a>
-                            <h4 class="text-dark font-weight-normal">Selamat datang di <span
-                                class="font-weight-bold">Bawaslu</span>
-                            </h4>
-                            <p class="text-muted">Sebelum masuk ke halaman admin, anda harus login terlebih dahulu sebagai
-                            admin. silahkan isi data dibawah untuk melanjutkan.</p>
-                            <form method="post" action="<?=base_url('welcome/admin')?>" class="needs-validation"
-                                novalidate="">
-                                <div class="form-group">
-                                    <label for="email">Email</label>
-                                    <input id="email" type="email" class="form-control" name="email" tabindex="1" required
-                                    autofocus>
-                                    <div class="invalid-feedback">
-                                        Harap isi bidang email
-                                    </div>
-                                </div>
-                                <div class="form-group">
-                                    <div class="d-block">
-                                        <label for="password" class="control-label">Password</label>
-                                    </div>
-                                    <input id="password" type="password" class="form-control" name="password" tabindex="2"
-                                    required>
-                                    <div class="invalid-feedback">
-                                        Harap isi bidang password
-                                    </div>
-                                </div>
-                                <br>
-                                <div class="form-group text-right">
-                                    <button type="submit" class="btn btn-block btn-success btn-lg btn-icon icon-right"
-                                    tabindex="4">
-                                    Masuk U/ Admin
-                                </button>
-                                
-                            </div>
-                        </form>
-                        <button type="submit" class="btn btn-block btn-outline-primary btn-lg btn-icon icon-right"
-                        tabindex="4">
-                        <a class="text-dark" href="<?=base_url('welcome/guru')?>"> Login U/ User </a>
-                    </button>
-                </div>
-            </div>
+						<!-- Button admin -->
+                        <a href="<?=base_url('welcome/admin')?>"> <img class="rounded mx-auto d-block mb-4"  src="<?=base_url('assets/')?>/img/bawaslu.png" alt="logo"
+                        	width="150" class=" mb-5 mt-2"></a>
+						<h4 class="text-dark font-weight-normal">Selamat datang di <span
+							class="font-weight-bold">Bawaslu</span>
+						</h4>
+						<p class="text-muted">Sebelum masuk ke halaman admin, anda harus login terlebih dahulu sebagai
+							admin. silahkan isi data dibawah untuk melanjutkan.</p>
+						<form method="post" action="<?=base_url('welcome/admin')?>" class="needs-validation"
+							novalidate="">
+							<div class="form-group">
+								<label for="email">Email</label>
+								<input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>
+								<div class="invalid-feedback">
+									Harap isi bidang email
+								</div>
+							</div>
+							<div class="form-group">
+								<div class="d-block">
+									<label for="password" class="control-label">Password</label>
+								</div>
+								<input id="password" type="password" class="form-control" name="password" tabindex="2" required>
+								<div class="invalid-feedback">
+									Harap isi bidang password
+								</div>
+							</div>
+							<br>
+							<div class="form-group text-right">
+								<button type="submit" class="btn btn-block btn-success btn-lg btn-icon icon-right"
+									tabindex="4">
+									Masuk U/ Admin
+								</button>
+							</div>
+						</form>
+						<a class="btn btn-block btn-outline-primary btn-lg btn-icon icon-right" href="<?=base_url('/welcome/guru')?>"> Login U/ User </a>
+                	</div>
+            	</div>
             <div class="col-lg-8 col-12 order-lg-2 order-1 min-vh-100 background-walk-y position-relative overlay-gradient-bottom"
             data-background="<?=base_url('assets/')?>stisla-assets/img/unsplash/login-bg.jpg">
             <div class="absolute-bottom-left index-2">
