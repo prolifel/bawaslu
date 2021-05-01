@@ -75,16 +75,17 @@ CREATE TABLE `kegiatan` (
   `image` varchar(255) NOT NULL,
   `divisi` varchar(100) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+ALTER TABLE `kegiatan` CHANGE `tanggal` `tanggal` DATE NOT NULL;
 
 --
 -- Dumping data for table `kegiatan`
 --
 
 INSERT INTO `kegiatan` (`id`, `nama`, `tanggal`, `deskripsi`, `image`, `divisi`) VALUES
-(1, 'kawin bersama', '12-09-2021', 'test deskripsi 1', '20180511_090122.jpg', 'Koordinator'),
-(2, 'naikin janda', '12-09-1999', 'test deskripsi 2', '20190605_094059.jpg', 'Humas'),
-(3, 'apapun itu', '22-09-1999', 'test deskripsi 3', 'default.jpg', 'Humas'),
-(4, 'mengais sampah', '9090900','test deskripsi 4',  'default.jpg', 'Kebersihan');
+(1, 'kawin bersama', '2021-05-03', 'test deskripsi 1', '20180511_090122.jpg', 'Koordinator'),
+(2, 'naikin janda', '2021-05-03', 'test deskripsi 2', '20190605_094059.jpg', 'Humas'),
+(3, 'apapun itu', '2021-05-04', 'test deskripsi 3', 'default.jpg', 'Humas'),
+(4, 'mengais sampah', '2021-05-05','test deskripsi 4',  'default.jpg', 'Kebersihan');
 
 -- --------------------------------------------------------
 

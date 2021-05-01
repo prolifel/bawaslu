@@ -135,7 +135,7 @@
 													</td>
 
 													<td>
-														<?php echo $u->tanggal ?>
+														<?php setlocale(LC_ALL, 'id-ID', 'id_ID'); echo strftime("%A, %d %B %Y", strtotime($u->tanggal)); ?>
 													</td>
 
 													<td>
