@@ -48,8 +48,6 @@ class Admin extends CI_Controller
 		$where = array('id' => $id);
 		$detail = $this->m_kegiatan->detail_kegiatan($id);
 		$data['detail'] = $detail;
-		// var_dump($data);
-		// die();
 		$this->load->view('admin/detail_kegiatan', $data);
 	}
 
@@ -69,12 +67,14 @@ class Admin extends CI_Controller
 
 		$id = $this->input->post('id');
 		$nama = $this->input->post('nama');
+		$deskripsi = $this->input->post('deskripsi');
 		$tanggal = $this->input->post('tanggal');
 		$divisi = $this->input->post('divisi');
 		$image = $_FILES['foto']['name'];
 		
 		$data = array(
 			'nama' => $nama,
+			'deskripsi' => $deskripsi,
 			'tanggal' => $tanggal,
 			'divisi' => $divisi
 		);
@@ -121,6 +121,10 @@ class Admin extends CI_Controller
             'required' => 'Harap isi kolom Kegiatan.',
             'min_length' => 'Nama terlalu pendek.',
         ]);
+        $this->form_validation->set_rules('deskripsi', 'Deskripsi', 'required|trim|min_length[4]', [
+            'required' => 'Harap isi kolom Deskripsi.',
+            'min_length' => 'Deskripsi terlalu pendek.',
+        ]);
         $this->form_validation->set_rules('tanggal', 'Tanggal', 'required', [
             'required' => 'Harap isi kolom Tanggal.'
         ]);
@@ -131,8 +135,6 @@ class Admin extends CI_Controller
         if ($this->form_validation->run() == false) {
             $this->load->view('admin/add_kegiatan');
         } else {
-			// set config foto
-			// $config['file_name'] = $id;
 			$config['upload_path'] = './uploads/';
 			$config['allowed_types'] = 'jpg|jpeg|png';
 			$config['max_size'] = '5120';
@@ -146,6 +148,7 @@ class Admin extends CI_Controller
 				$tanggal = $this->input->post('tanggal', true);
 				$data = [
 					'nama' => htmlspecialchars($this->input->post('nama', true)),
+					'deskripsi' => htmlspecialchars($this->input->post('deskripsi')),
 					'tanggal' => htmlspecialchars($tanggal),
 					'image' => $path,
 					'divisi' => htmlspecialchars($this->input->post('divisi')),

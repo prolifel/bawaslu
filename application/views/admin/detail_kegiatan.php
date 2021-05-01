@@ -158,15 +158,17 @@
 											<td> <?= $detail->nama ?></td>
 										</tr>
 										<tr style="border-bottom: 0.5px solid #6c757d;">
+											<td><span class="font-weight-bold">Deskripsi Kegiatan :</span></td>
+											<td> <?= $detail->deskripsi ?></td>
+										</tr>
+										<tr style="border-bottom: 0.5px solid #6c757d;">
 											<td><span class="font-weight-bold">Tanggal Kegiatan :</span></td>
 											<td> <?= $detail->tanggal ?></td>
 										</tr>
-
 										<tr style="border-bottom: 0.5px solid #6c757d;">
 											<td><span class="font-weight-bold">Divisi :</span></td>
 											<td><?= $detail->divisi ?></td>
 										</tr>
-
 									</tbody>
 								</table>
 								<p style="font-weight:500px!important;font-size:18px;text-align:justify;" class="text-justify">

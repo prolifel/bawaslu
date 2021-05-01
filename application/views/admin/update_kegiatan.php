@@ -122,11 +122,15 @@
 									<div class="form-group">
 										<input type="hidden" name="id" value="<?= $u->id ?>">
 										<input type="hidden" name="imageLama" value="<?= $u->image?>">
-
 										<div class="form-group">
 											<label for="nama" class="label-font-register">Nama Kegiatan</label>
 											<input type="text" autocomplete="off" class="form-control effect-9" name="nama" id="nama" value="<?= $u->nama ?>">
 											<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+										</div>
+										<div class="form-group">
+											<label for="deskripsi" class="label-font-register">Deskripsi Kegiatan</label>
+											<input type="text" autocomplete="off" class="form-control effect-9" name="deskripsi" id="deskripsi" value="<?= $u->deskripsi ?>">
+											<?= form_error('deskripsi', '<small class="text-danger">', '</small>'); ?>
 										</div>
 										<div class="form-group">
 											<label for="foto" class="label-font-register">Foto Kegiatan (maksimal berukuran 4mb)</label>

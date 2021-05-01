@@ -120,6 +120,11 @@
 								<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
 							</div>
 							<div class="form-group">
+								<label for="deskripsi" class="label-font-register">Deskripsi Kegiatan</label>
+								<textarea autocomplete="off" class="form-control effect-9" name="deskripsi" id="deskripsi" value="<?= set_value('deskripsi'); ?>" rows="3"></textarea>
+								<?= form_error('deskripsi', '<small class="text-danger">', '</small>'); ?>
+							</div>
+							<div class="form-group">
 								<label for="foto" class="label-font-register">Foto Kegiatan (maksimal berukuran 4mb)</label>
 								<input type="file" name="foto" class="form-control effect-9" id="foto" accept="image/*" required>
 								<?= form_error('foto', '<small class="text-danger">', '</small>'); ?>
