@@ -5,7 +5,7 @@
 
 <head>
 	<meta charset="utf-8" />
-	<title>Bawaslu - User Page</title>
+	<title>Bawaslu - Kegiatan</title>
 	<meta name="description" content="Latest updates and statistic charts">
 	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
 
@@ -72,7 +72,12 @@
 
 	<!--end::Layout Skins -->
 	<link rel="shortcut icon" href="<?= base_url('assets') ?>/img/bawaslu.png" />
-	<script src="https://cdn.jsdelivr.net/npm/sweetalert2@9.10.0/dist/sweetalert2.all.min.js"></script>
+
+	<!-- DataTables -->
+	<link href="<?= base_url('assets') ?>/plugins/datatables/dataTables.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<link href="<?= base_url('assets') ?>/plugins/datatables/buttons.bootstrap4.min.css" rel="stylesheet" type="text/css" />
+	<!-- Responsive datatable examples -->
+	<link href="<?= base_url('assets') ?>/plugins/datatables/responsive.bootstrap4.min.css" rel="stylesheet" type="text/css" />
 </head>
 
 <!-- end::Head -->
@@ -119,9 +124,9 @@
 				<div class="kt-aside-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_aside_menu_wrapper">
 					<div id="kt_aside_menu" class="kt-aside-menu  kt-aside-menu--dropdown " data-ktmenu-vertical="1" data-ktmenu-dropdown="1" data-ktmenu-scroll="0">
 						<ul class="kt-menu__nav ">
-							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--here" aria-haspopup="true"><a href="<?= base_url('user') ?>" class="kt-menu__link"><i class="kt-menu__link-icon flaticon2-protection"></i><span class="kt-menu__link-text">Dashboard</span></a>
+							<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"><a href="<?= base_url('user') ?>" class="kt-menu__link"><i class="kt-menu__link-icon flaticon2-protection"></i><span class="kt-menu__link-text">Dashboard</span></a>
 							</li>
-							<li class="kt-menu__item  kt-menu__item--submenu" aria-haspopup="true"><a href="<?= base_url('user/add_materi') ?>" class="kt-menu__link"><i class="kt-menu__link-icon flaticon2-calendar-5"></i><span class="kt-menu__link-text">Kegiatan</span></a>
+							<li class="kt-menu__item  kt-menu__item--submenu kt-menu__item--here" aria-haspopup="true"><a href="<?= base_url('user/add_materi') ?>" class="kt-menu__link"><i class="kt-menu__link-icon flaticon2-calendar-5"></i><span class="kt-menu__link-text">Kegiatan</span></a>
 							</li>
 						</ul>
 					</div>
@@ -133,8 +138,12 @@
 			<!-- end:: Aside -->
 
 			<div class="kt-grid__item kt-grid__item--fluid kt-grid kt-grid--hor kt-wrapper" id="kt_wrapper">
+
 				<!-- begin:: Header -->
 				<div id="kt_header" class="kt-header kt-grid kt-grid--ver  kt-header--fixed ">
+
+					<!-- begin: Header Menu -->
+					<div id="kt_header" class="kt-header kt-grid kt-grid--ver  kt-header--fixed ">
 					<!-- begin: Header Menu -->
 					<div class="kt-header-menu-wrapper kt-grid__item kt-grid__item--fluid" id="kt_header_menu_wrapper">
 						<!-- Sengaja kosong -->
@@ -191,8 +200,8 @@
 					<!-- begin:: Subheader -->
 					<div class="kt-subheader   kt-grid__item" id="kt_subheader">
 						<div class="kt-subheader__main">
-							<h1 class="kt-subheader__title font-weight-bold" style="font-size: 33px !important; letter-spacing:-1px; line-height:3px;">
-								Dashboard </h1>
+							<h1 class="kt-subheader__title font-weight-bold" style="font-size: 35px !important; letter-spacing:-1px;">
+								Kegiatan </h1>
 						</div>
 						<div class="kt-subheader__toolbar">
 							<div class="kt-subheader__wrapper">
@@ -212,81 +221,75 @@
 							</div>
 						</div>
 					</div>
-
 					<!-- end:: Subheader -->
 
 					<!-- begin:: Content -->
-
-					<!-- begin:: Content -->
 					<div class="kt-content  kt-grid__item kt-grid__item--fluid" id="kt_content">
-
 						<!--Begin::Dashboard 7-->
-
 						<!--Begin::Section-->
-
 						<div class="row">
-							<div class="col-xl-12">
+							<div class="col-md-12 bg-white p-4 container" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px">
+								<div class="bg-white p-4" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
+									<div class="">
+										<table id="datatable-buttons" class="table table-striped table-bordered" cellspacing="0" width="100%">
+											<thead>
+												<tr>
+													<th>ID</th>
+													<th>Nama Kegiatan</th>
+													<th>Tanggal</th>
+													<th>Foto</th>
+													<th>Divisi</th>
+													<th>Opsi</th>
+												</tr>
+											</thead>
+											<tbody>
+												<?php foreach ($user as $u) { ?>
+													<tr class="text-center">
+														<th scope="row">
+															<?php echo $u->id ?>
+														</th>
+														<td>
+															<?php echo $u->nama ?>
+														</td>
+														<td>
+															<?php echo $u->tanggal ?>
+														</td>
+														<td>
+															<img class="rounded-circle" height="50px" width="50px" src="<?= base_url() . $u->image; ?>">
+														</td>
+														<td>
+															<?php echo $u->divisi ?>
+														</td>
+														<td class="text-center">
+                                                    		<a href="<?php echo site_url('admin/detail_kegiatan/' . $u->id . '?data=user'); ?>" class="btn btn-success">Detail ⭢</a>
+                                                		</td>
 
-								<!--begin:: Widgets/Blog-->
-								<div class="kt-portlet kt-portlet--height-fluid kt-widget19">
-									<div class="kt-portlet__body kt-portlet__body--fit">
-										<div class="kt-widget19__pic kt-portlet-fit--top kt-portlet-fit--sides">
-											<img src="<?= base_url('assets/') ?>img/user.png" class=" img-fluid" alt="" srcset="">
-											<h1 class="kt-widget19__title kt-font-light display-4 font-weight-bold" style="letter-spacing: -1px;">
-												Selamat Datang, <?php
-																$data['user'] = $this->db->get_where('user', ['email' =>
-																$this->session->userdata('email')])->row_array();
-																echo $data['user']['nama'];
-																?> !
-											</h1>
-											<div class="kt-widget19__shadow"></div>
-											<div class="kt-widget19__labels">
-												<a href="#" class="btn btn-label-light-o2 btn-bold btn-sm ">Bawaslu</a>
-											</div>
-										</div>
-									</div>
-									<div class="kt-portlet__body">
-										<div class="kt-widget19__wrapper">
-											<div class="kt-widget19__content">
-												<div class="kt-widget19__userpic">
-													<img src="<?= base_url('assets/') ?>assets/media/users/default.jpg" alt="">
-												</div>
-												<div class="kt-widget19__info">
-													<a href="#" class="kt-widget19__username font-weight-bold">
-														<?php
-														$data['user'] = $this->db->get_where('user', ['email' =>
-														$this->session->userdata('email')])->row_array();
-														echo $data['user']['nama'];
-														?> !
-													</a>
-													<span class="kt-widget19__time">
-														Users
-													</span>
-												</div>
-											</div>
-											<div class="kt-widget19__text">
-												Selamat datang di Bawaslu!
-											</div>
-										</div>
-										<div class="kt-widget19__action">
-											<a href="<?= base_url('user/add_materi')?>" class="btn btn-sm btn-label-brand btn-bold">Data Kegiatan</a>
-										</div>
+                                                <!-- <td class="text-center">
+                                                    <a href="<?php echo site_url('admin/update_kegiatan/' . $u->id); ?>" class="btn btn-info">Update ⭢</a>
+
+                                                    <a href="<?php echo site_url('admin/delete_kegiatan/' . $u->id); ?>" class="btn btn-danger remove">Delete ✖</a>
+                                                </td> -->
+
+													</tr>
+												<?php
+												}
+												?>
+											</tbody>
+										</table>
 									</div>
 								</div>
-
-								<!--end:: Widgets/Blog-->
 							</div>
 						</div>
 
 						<!--End::Section-->
-
+						<br>
 						<!--end:: Widgets/Order Statistics-->
 
 
 						<!-- begin:: Footer -->
 						<div class="kt-footer kt-grid__item kt-grid kt-grid--desktop kt-grid--ver-desktop">
 							<div class="kt-footer__copyright">
-								2021&nbsp;&copy;&nbsp;<a href="#" target="_blank" class="kt-link">jordan</a>
+								2019&nbsp;&copy;&nbsp;<a href="#" target="_blank" class="kt-link">Saiful Anam</a>
 							</div>
 							<div class="kt-footer__menu">
 								Made with &nbsp; <span class="" style="color: red"> &#10084;</span> &nbsp; by Saiful
@@ -300,408 +303,7 @@
 
 			<!-- end:: Page -->
 
-			<!-- begin::Quick Panel -->
-			<div id="kt_quick_panel" class="kt-quick-panel">
-				<a href="#" class="kt-quick-panel__close" id="kt_quick_panel_close_btn"><i class="flaticon2-delete"></i></a>
-				<div class="kt-quick-panel__nav">
-					<ul class="nav nav-tabs nav-tabs-line nav-tabs-bold nav-tabs-line-3x nav-tabs-line-brand  kt-notification-item-padding-x" role="tablist">
-						<li class="nav-item active">
-							<a class="nav-link active" data-toggle="tab" href="#kt_quick_panel_tab_notifications" role="tab">Notifications</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#kt_quick_panel_tab_logs" role="tab">Audit
-								Logs</a>
-						</li>
-						<li class="nav-item">
-							<a class="nav-link" data-toggle="tab" href="#kt_quick_panel_tab_settings" role="tab">Settings</a>
-						</li>
-					</ul>
-				</div>
-				<div class="kt-quick-panel__content">
-					<div class="tab-content">
-						<div class="tab-pane fade show kt-scroll active" id="kt_quick_panel_tab_notifications" role="tabpanel">
-							<div class="kt-notification">
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-line-chart kt-font-success"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New order has been received
-										</div>
-										<div class="kt-notification__item-time">
-											2 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-box-1 kt-font-brand"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New customer is registered
-										</div>
-										<div class="kt-notification__item-time">
-											3 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-chart2 kt-font-danger"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											Application has been approved
-										</div>
-										<div class="kt-notification__item-time">
-											3 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-image-file kt-font-warning"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New file has been uploaded
-										</div>
-										<div class="kt-notification__item-time">
-											5 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-bar-chart kt-font-info"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New user feedback received
-										</div>
-										<div class="kt-notification__item-time">
-											8 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-pie-chart-2 kt-font-success"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											System reboot has been successfully completed
-										</div>
-										<div class="kt-notification__item-time">
-											12 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-favourite kt-font-danger"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New order has been placed
-										</div>
-										<div class="kt-notification__item-time">
-											15 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item kt-notification__item--read">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-safe kt-font-primary"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											Company meeting canceled
-										</div>
-										<div class="kt-notification__item-time">
-											19 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-psd kt-font-success"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New report has been received
-										</div>
-										<div class="kt-notification__item-time">
-											23 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon-download-1 kt-font-danger"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											Finance report has been generated
-										</div>
-										<div class="kt-notification__item-time">
-											25 hrs ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon-security kt-font-warning"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New customer comment recieved
-										</div>
-										<div class="kt-notification__item-time">
-											2 days ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification__item">
-									<div class="kt-notification__item-icon">
-										<i class="flaticon2-pie-chart kt-font-warning"></i>
-									</div>
-									<div class="kt-notification__item-details">
-										<div class="kt-notification__item-title">
-											New customer is registered
-										</div>
-										<div class="kt-notification__item-time">
-											3 days ago
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="tab-pane fade kt-scroll" id="kt_quick_panel_tab_logs" role="tabpanel">
-							<div class="kt-notification-v2">
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon-bell kt-font-brand"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											5 new user generated report
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											Reports based on sales
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon2-box kt-font-danger"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											2 new items submited
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											by Grog John
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon-psd kt-font-brand"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											79 PSD files generated
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											Reports based on sales
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon2-supermarket kt-font-warning"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											$2900 worth producucts sold
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											Total 234 items
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon-paper-plane-1 kt-font-success"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											4.5h-avarage response time
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											Fostest is Barry
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon2-information kt-font-danger"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											Database server is down
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											10 mins ago
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon2-mail-1 kt-font-brand"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											System report has been generated
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											Fostest is Barry
-										</div>
-									</div>
-								</a>
-								<a href="#" class="kt-notification-v2__item">
-									<div class="kt-notification-v2__item-icon">
-										<i class="flaticon2-hangouts-logo kt-font-warning"></i>
-									</div>
-									<div class="kt-notification-v2__itek-wrapper">
-										<div class="kt-notification-v2__item-title">
-											4.5h-avarage response time
-										</div>
-										<div class="kt-notification-v2__item-desc">
-											Fostest is Barry
-										</div>
-									</div>
-								</a>
-							</div>
-						</div>
-						<div class="tab-pane kt-quick-panel__content-padding-x fade kt-scroll" id="kt_quick_panel_tab_settings" role="tabpanel">
-							<form class="kt-form">
-								<div class="kt-heading kt-heading--sm kt-heading--space-sm">Customer Care</div>
-								<div class="form-group form-group-xs row">
-									<label class="col-8 col-form-label">Enable Notifications:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--success kt-switch--sm">
-											<label>
-												<input type="checkbox" checked="checked" name="quick_panel_notifications_1">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="form-group form-group-xs row">
-									<label class="col-8 col-form-label">Enable Case Tracking:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--success kt-switch--sm">
-											<label>
-												<input type="checkbox" name="quick_panel_notifications_2">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="form-group form-group-last form-group-xs row">
-									<label class="col-8 col-form-label">Support Portal:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--success kt-switch--sm">
-											<label>
-												<input type="checkbox" checked="checked" name="quick_panel_notifications_2">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="kt-separator kt-separator--space-md kt-separator--border-dashed">
-								</div>
-								<div class="kt-heading kt-heading--sm kt-heading--space-sm">Reports</div>
-								<div class="form-group form-group-xs row">
-									<label class="col-8 col-form-label">Generate Reports:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--sm kt-switch--danger">
-											<label>
-												<input type="checkbox" checked="checked" name="quick_panel_notifications_3">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="form-group form-group-xs row">
-									<label class="col-8 col-form-label">Enable Report Export:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--sm kt-switch--danger">
-											<label>
-												<input type="checkbox" name="quick_panel_notifications_3">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="form-group form-group-last form-group-xs row">
-									<label class="col-8 col-form-label">Allow Data Collection:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--sm kt-switch--danger">
-											<label>
-												<input type="checkbox" checked="checked" name="quick_panel_notifications_4">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="kt-separator kt-separator--space-md kt-separator--border-dashed">
-								</div>
-								<div class="kt-heading kt-heading--sm kt-heading--space-sm">Memebers</div>
-								<div class="form-group form-group-xs row">
-									<label class="col-8 col-form-label">Enable Member singup:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--sm kt-switch--brand">
-											<label>
-												<input type="checkbox" checked="checked" name="quick_panel_notifications_5">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="form-group form-group-xs row">
-									<label class="col-8 col-form-label">Allow User Feedbacks:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--sm kt-switch--brand">
-											<label>
-												<input type="checkbox" name="quick_panel_notifications_5">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-								<div class="form-group form-group-last form-group-xs row">
-									<label class="col-8 col-form-label">Enable Customer Portal:</label>
-									<div class="col-4 kt-align-right">
-										<span class="kt-switch kt-switch--sm kt-switch--brand">
-											<label>
-												<input type="checkbox" checked="checked" name="quick_panel_notifications_6">
-												<span></span>
-											</label>
-										</span>
-									</div>
-								</div>
-							</form>
-						</div>
-					</div>
-				</div>
-			</div>
 
-			<!-- end::Quick Panel -->
 
 			<!-- begin::Scrolltop -->
 			<div id="kt_scrolltop" class="kt-scrolltop">
@@ -733,29 +335,6 @@
 					}
 				};
 			</script>
-
-			<?php if ($this->session->flashdata('success-reg')) : ?>
-				<script>
-					Swal.fire({
-						icon: 'success',
-						title: 'Materi Telah Ditambahkan!',
-						text: 'Selamat data ditambah!',
-						showConfirmButton: false,
-						timer: 2500
-					})
-				</script>
-			<?php endif; ?>
-			<?php if ($this->session->flashdata('user-delete')) : ?>
-				<script>
-					Swal.fire({
-						icon: 'success',
-						title: 'Data Siswa Telah Dihapus!',
-						text: 'Selamat data telah Dihapus!',
-						showConfirmButton: false,
-						timer: 2500
-					})
-				</script>
-			<?php endif; ?>
 
 			<!-- end::Global Config -->
 
@@ -883,6 +462,28 @@
 			</script>
 
 			<!--end::Global App Bundle -->
+			<!-- JS Libraies -->
+			<!-- Required datatable js -->
+			<script src="<?= base_url('assets') ?>/plugins/datatables/jquery.dataTables.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/dataTables.bootstrap4.min.js"></script>
+			<!-- Buttons examples -->
+			<script src="<?= base_url('assets') ?>/plugins/datatables/dataTables.buttons.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/buttons.bootstrap4.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/jszip.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/pdfmake.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/vfs_fonts.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/buttons.html5.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/buttons.print.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/buttons.colVis.min.js"></script>
+			<!-- Responsive examples -->
+			<script src="<?= base_url('assets') ?>/plugins/datatables/dataTables.responsive.min.js"></script>
+			<script src="<?= base_url('assets') ?>/plugins/datatables/responsive.bootstrap4.min.js"></script>
+
+			<!-- Datatable init js -->
+			<script src="<?= base_url('assets') ?>/plugins/datatables.init.js"></script>
+
+			<!-- App js -->
+			<script src="<?= base_url('assets') ?>/plugins/app.js"></script>
 </body>
 
 <!-- end::Body -->

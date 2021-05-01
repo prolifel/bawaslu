@@ -4,13 +4,15 @@ defined('BASEPATH') or exit('No direct script access allowed');
 class Welcome extends CI_Controller
 {
 
-    public function index(){
-    	$this->load->view('template/nav');
-    	$this->load->view('index');
-    	$this->load->view('template/footer');
-  	}
+	// public function index()
+	// {
+	// 	$this->load->view('template/nav');
+	// 	$this->load->view('index');
+	// 	$this->load->view('template/footer');
+	// }
 
-  	public function validateLogin(){
+	public function validateLogin()
+	{
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
 			'required' => 'Harap isi bidang email!',
 			'valid_email' => 'Email tidak valid!',
@@ -24,33 +26,38 @@ class Welcome extends CI_Controller
 			$this->load->library('user_agent');
 			redirect($this->agent->referrer());
 		} else {
-				//validasi sukses
+			//validasi sukses
 			$this->login();
 		}
 	}
 
-	public function logout(){
+	// logout admin
+	public function logout_admin()
+	{
 		$this->session->unset_userdata('email');
 		$this->session->set_flashdata('success-logout', 'Berhasil!');
 		redirect(base_url('welcome/admin'));
 	}
 
-	public function logoutt(){
+	// logout user
+	public function logout_user()
+	{
 		$this->session->unset_userdata('email');
 		$this->session->set_flashdata('success-logout', 'Berhasil!');
-		redirect(base_url('welcome/guru'));
+		redirect(base_url('welcome/user'));
 	}
 
-	private function login(){
+	private function login()
+	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
 		$user = $this->db->get_where('siswa', ['email' => $email])->row_array();
 
 		if ($user) {
-				//user ada
+			//user ada
 			if ($user['is_active'] == 1) {
-					//cek password
+				//cek password
 				if (password_verify($password, $user['password'])) {
 					$data = [
 						'email' => $user['email'],
@@ -60,20 +67,21 @@ class Welcome extends CI_Controller
 					redirect(base_url('user'));
 				} else {
 					$this->session->set_flashdata('fail-pass', 'Gagal!');
-					redirect(base_url('welcome'));
+					redirect(base_url('welcome/user'));
 				}
 			} else {
 				$this->session->set_flashdata('fail-email', 'Gagal!');
-				redirect(base_url('welcome'));
+				redirect(base_url('welcome/user'));
 			}
 		} else {
 			$this->session->set_flashdata('fail-login', 'Gagal!');
-			redirect(base_url('welcome'));
+			redirect(base_url('welcome/user'));
 		}
 	}
 
 	// view login admin
-	public function admin(){
+	public function admin()
+	{
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
 			'required' => 'Harap isi bidang email!',
 			'valid_email' => 'Email tidak valid!',
@@ -90,7 +98,8 @@ class Welcome extends CI_Controller
 	}
 
 	// post login
-	private function adminlogin(){
+	private function adminlogin()
+	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
@@ -116,25 +125,29 @@ class Welcome extends CI_Controller
 		}
 	}
 
-	public function tentang(){
+	public function tentang()
+	{
 		$this->load->view('template/nav');
 		$this->load->view('tentang');
 		$this->load->view('template/footer');
 	}
 
-	public function pelajaran(){
+	public function pelajaran()
+	{
 		$this->load->view('template/nav');
 		$this->load->view('pelajaran');
 		$this->load->view('template/footer');
 	}
 
-	public function kontak(){
+	public function kontak()
+	{
 		$this->load->view('template/nav');
 		$this->load->view('kontak');
 		$this->load->view('template/footer');
 	}
 
-	public function verify(){
+	public function verify()
+	{
 		$email = $this->input->get('email');
 		$token = $this->input->get('token');
 
@@ -149,26 +162,27 @@ class Welcome extends CI_Controller
 
 					$this->db->delete('token', ['email' => $email]);
 					$this->session->set_flashdata('success-verify', 'Bserhasil!');
-					redirect(base_url('welcome'));
+					redirect(base_url('welcome/user'));
 				} else {
 					$this->db->delete('siswa', ['email' => $email]);
 					$this->db->delete('token', ['email' => $email]);
 
 					$this->session->set_flashdata('fail-token-expired', 'gagal');
-					redirect(base_url('welcome'));
+					redirect(base_url('welcome/user'));
 				}
 			} else {
 				$this->session->set_flashdata('fail-token', 'gagal');
-				redirect(base_url('welcome'));
+				redirect(base_url('welcome/user'));
 			}
 		} else {
 			$this->session->set_flashdata('fail-verify', 'gagal');
-			redirect(base_url('welcome'));
+			redirect(base_url('welcome/user'));
 		}
 	}
 
-    // Guru
-	public function guru(){
+	// Get view login user
+	public function user()
+	{
 		$this->form_validation->set_rules('email', 'Email', 'trim|required|valid_email', [
 			'required' => 'Harap isi bidang email!',
 			'valid_email' => 'Email tidak valid!',
@@ -177,42 +191,45 @@ class Welcome extends CI_Controller
 			'required' => 'Harap isi bidang password!',
 		]);
 		if ($this->form_validation->run() == false) {
-			$this->load->view('guru/login');
+			$this->load->view('user/login');
 		} else {
 			//validasi sukses
-			$this->guru_login_process();
+			$this->user_login_process();
 		}
 	}
 
-	private function guru_login_process(){
+	// Post login user
+	private function user_login_process()
+	{
 		$email = $this->input->post('email');
 		$password = $this->input->post('password');
 
-		$user = $this->db->get_where('guru', ['email' => $email])->row_array();
+		// print_r("masuk sini");
+		$user = $this->db->get_where('user', ['email' => $email])->row_array();
 
 		if ($user) {
 			//cek password
 			if (password_verify($password, $user['password'])) {
 				$data = [
 					'email' => $user['email'],
-					'nama_guru' => $user['nama_guru'],
+					'nama' => $user['nama'],
 				];
 				$this->session->set_userdata($data);
-				redirect(base_url('guru'));
+				redirect(base_url('user'));
 			} else {
 
 				$this->session->set_flashdata('fail-pass', 'Gagal!');
-				redirect(base_url('welcome/guru'));
+				redirect(base_url('welcome/user'));
 			}
 		} else {
 
 			$this->session->set_flashdata('fail-login', 'Gagal!');
-			redirect(base_url('welcome/guru'));
+			redirect(base_url('welcome/user'));
 		}
 	}
 
-	public function email(){
+	public function email()
+	{
 		$this->load->view('template/email-template');
 	}
-
 }

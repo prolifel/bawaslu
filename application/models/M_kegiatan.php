@@ -1,25 +1,25 @@
 <?php
 
-class M_guru extends CI_Model
+class M_kegiatan extends CI_Model
 {
     public function tampil_data()
     {
-        return $this->db->get('guru');
+        return $this->db->get('kegiatan');
     }
 
-    public function detail_guru($nip = null)
+    public function detail_kegiatan($id = null)
     {
-        $query = $this->db->get_where('guru', array('nip' => $nip))->row();
+        $query = $this->db->get_where('kegiatan', array('id' => $id))->row();
         return $query;
     }
 
-    public function delete_guru($where, $table)
+    public function delete_kegiatan($where, $table)
     {
         $this->db->where($where);
         $this->db->delete($table);
     }
 
-    public function update_guru($where, $table)
+    public function update_kegiatan($where, $table)
     {
         return $this->db->get_where($table, $where);
     }

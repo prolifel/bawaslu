@@ -50,7 +50,7 @@ silahkan dicoba dan ditest feature yang telah ada 🤙🏻
 - Password : 123456
 
 **Teacher Default Account**
-- ../learnify/welcome/guru
+- ../learnify/welcome/user
 - Email : zaidanline67@gmail.com
 - Password : 123456
 

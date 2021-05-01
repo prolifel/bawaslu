@@ -1,25 +1,25 @@
 <?php
 
-class M_siswa extends CI_Model
+class M_divisi extends CI_Model
 {
     public function tampil_data()
     {
-        return $this->db->get('siswa');
+        return $this->db->get('divisi');
     }
 
-    public function detail_siswa($id = null)
+    public function detail_divisi($id = null)
     {
-        $query = $this->db->get_where('siswa', array('id' => $id))->row();
+        $query = $this->db->get_where('divisi', array('id' => $id))->row();
         return $query;
     }
 
-    public function delete_siswa($where, $table)
+    public function delete_divisi($where, $table)
     {
         $this->db->where($where);
         $this->db->delete($table);
     }
 
-    public function update_siswa($where, $table)
+    public function update_divisi($where, $table)
     {
         return $this->db->get_where($table, $where);
     }

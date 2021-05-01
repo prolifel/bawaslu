@@ -41,11 +41,11 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
             <div class="d-flex flex-wrap align-items-stretch">
                 <div class="col-lg-4 col-md-6 col-12 order-lg-1 min-vh-100 order-2 bg-white">
                     <div class="p-4 m-3">
-                        <a href="<?= base_url('welcome') ?>"> <img class="rounded mx-auto d-block mb-4" src="<?= base_url('assets/') ?>/img/bawaslu.png" alt="logo" width="150" class=" mb-5 mt-2"></a>
+                        <a href="<?= base_url('welcome/user') ?>"> <img class="rounded mx-auto d-block mb-4" src="<?= base_url('assets/') ?>/img/bawaslu.png" alt="logo" width="150" class=" mb-5 mt-2"></a>
                         <h4 class="text-dark font-weight-normal">Selamat datang di <span class="font-weight-bold">Bawaslu</span></h4>
                         <p class="text-muted">Sebelum masuk ke halaman User, anda harus login terlebih dahulu sebagai
                             User. silahkan isi data dibawah untuk melanjutkan.</p>
-                        <form method="post" action="<?= base_url('welcome/guru') ?>" class="needs-validation" novalidate="">
+                        <form method="post" action="<?= base_url('welcome/user') ?>" class="needs-validation" novalidate="">
                             <div class="form-group">
                                 <label for="email">Email</label>
                                 <input id="email" type="email" class="form-control" name="email" tabindex="1" required autofocus>

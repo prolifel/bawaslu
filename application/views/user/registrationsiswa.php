@@ -1,12 +1,13 @@
 
+
 <!DOCTYPE html>
-<html lang="en" style="scroll-behavior: smooth">
+<html lang="en" style="scroll-behavior: smooth;">
 
 <head>
 
     <meta charset="UTF-8">
     <meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-    <title>Update Data Kegiatan</title>
+    <title>Tambah Data Kegiatan - Bawaslu</title>
     <!-- General CSS Files -->
     <link rel="icon" href="<?= base_url('assets/') ?>img/bawaslu.png" type="image/png">
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
@@ -22,7 +23,6 @@
 </head>
 
 <body>
-
     <!-- Start Sidebar -->
     <div id="app">
         <div class="main-wrapper">
@@ -45,7 +45,7 @@
                     </a>
                     <div class="dropdown-menu dropdown-menu-right">
                         <div class="dropdown-title">Admin</div>
-                        <a href="<?= base_url('welcome/logout') ?>" class="dropdown-item has-icon text-danger">
+                        <a href="<?= base_url('welcome/logout_admin') ?>" class="dropdown-item has-icon text-danger">
                             <i class="fas fa-sign-out-alt"></i> Logout
                         </a>
                     </div>
@@ -75,7 +75,7 @@
                         <a href="#" class="nav-link has-dropdown"><i class="fas fa-chalkboard-teacher"></i>
                             <span>User</span></a>
                             <ul class="dropdown-menu">
-                                <li><a class="nav-link" href="<?= base_url('admin/data_guru') ?>">Management User</a>
+                                <li><a class="nav-link" href="<?= base_url('admin/data_user') ?>">Management User</a>
                                 </li>
                             </ul>
                         </li>
@@ -84,17 +84,17 @@
                             <a href="#" class="nav-link has-dropdown" data-toggle="dropdown"><i class="fas fa-clipboard-list"></i>
                                 <span>Kegiatan</span></a>
                                 <ul class="dropdown-menu">
-                                    <li><a class="nav-link" href="<?= base_url('admin/data_siswa') ?>">Management Kegiatan</a></li>
+                                    <li><a class="nav-link" href="<?= base_url('admin/data_kegiatan') ?>">Management Kegiatan</a></li>
                                 </ul>
                             </li>
-                            
+
                             <li class="menu-header">Management Divisi</li>
                             <li class="nav-item dropdown">
                                 <a href="#" class="nav-link has-dropdown"><i class="fas fa-book"></i>
                                     <span>Divisi</span></a>
                                     <ul class="dropdown-menu">
-                                        <li><a class="nav-link" href="<?= base_url('admin/data_materi') ?>">Management Divisi</a>
-                                         
+                                        <li><a class="nav-link" href="<?= base_url('admin/data_divisi') ?>">Management Divisi</a>
+
                                         </ul>
                                     </li>
                                     <li class="menu-header">About Developer</li>
@@ -105,7 +105,7 @@
                                                 <li><a class="nav-link" href="<?= base_url('admin/about_developer') ?>">Tentang
                                                 Pembuat</a>
                                             </li>
-                                            <li><a class="nav-link" href="<?= base_url('admin/about_learnify') ?>">Tentang
+                                            <li><a class="nav-link" href="<?= base_url('admin/about_bawaslu') ?>">Tentang
                                             Bawaslu</a>
                                         </li>
                                     </ul>
@@ -120,70 +120,81 @@
                                 <div class="">
                                     <div class="card" style="width:100%;">
                                         <div class="card-body">
-                                            <h2 class="card-title" style="color: black;">Update Kegiatan</h2>
+                                            <h2 class="card-title" style="color: black;">Tambah Data Kegiatan</h2>
                                             <hr>
-                                            <p class="card-text">After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? who's responsible for the ask for this request? but moving the goalposts gain traction.
+                                            <p class="card-text"> After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? who's responsible for the ask for this request? but moving the goalposts gain traction.
                                             </p>
                                             <a href="#detail" class="btn btn-success">Saya paham dan
                                             ingin melanjutkan ⭢</a>
                                         </div>
                                     </div>
                                 </div>
-                                <form action="<?= base_url('admin/user_edit') ?>" enctype="multipart/form-data" method="post">
-                                    <?php foreach ($user as $u) { ?>
-                                        <div class="">
-                                            <div class="hero text-white hero-bg-image" data-background="<?= base_url('assets/') ?>stisla-assets/img/unsplash/eberhard-grossgasteiger-1207565-unsplash.jpg">
-                                                <div class="col-md-4 mx-auto rounded-circle bg-white p-3" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
-                                                    <img src="<?= base_url() . 'assets/profile_picture/' . $u->image; ?>" class="card-img-top  rounded-circle img-responsive" alt="...">
-                                                </div>
-                                                <div class="input-group mt-3 mx-auto" style="width: 50%;">
-                                                    <div class="input-group-prepend">
-                                                        <span class="input-group-text" id="inputGroupFileAddon01">Upload</span>
-                                                    </div>
-                                                    <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="image" name="image" aria-describedby="inputGroupFileAddon01">
-                                                        <label class="custom-file-label" for="inputGroupFile01">Upload Photo</label>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-                                        <br>
-                                        <div id="detail" class="col-md-12 bg-white p-3" style="border-radius:3px;box-shadow:rgba(0, 0, 0, 0.03) 0px 4px 8px 0px;">
-                                            <h1 class="font-weight-bold card-title text-center" style="color: black;">Update Data
-                                                Kegiatan
-                                            </h1>
-                                            <p class="text-center" style="line-height: 5px;">Silahkan isi data dibawah untuk update
-                                            data, dan upload file diatas untuk update data profile picture</p>
-                                            <hr>
+
+                                <div id="detail" class="card card-success">
+                                    <div class="col-md-12 text-center">
+                                        <p class="registration-title font-weight-bold display-4 mt-4" style="color:black; font-size: 50px;">
+                                        Pendataan Kegiatan</p>
+                                        <p style="line-height:-30px;margin-top:-20px;">Silahkan isi data data yang diperlukan
+                                        dibawah </p>
+                                        <hr>
+                                    </div>
+
+                                    <div class="card-body">
+                                        <?= form_open_multipart(base_url('user/registration_act')); ?>
                                             <div class="form-group">
-                                                <input type="hidden" name="id" value="<?= $u->id ?>">
-                                                
-                                                <input type="hidden" name="is_active" value="<?= $u->is_active ?>">
-                                                
-                                                <label for="exampleInputEmail1" class="font-weight-bold" style="font-size: 20px;">Nama Kegiatan</label>
-                                                <input type=" text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp" required name="nama" value="<?= $u->nama ?>">
+                                                <label for="nama_lengkap" class="label-font-register">Nama Kegiatan</label>
+                                                <input type="text" autocomplete="off" class="form-control effect-9" name="nama" id="nama_lengkap" value="<?= set_value('nama'); ?>">
+                                                <?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
                                             </div>
                                             <div class="form-group">
-                                                <label for="exampleInputPassword1" class="font-weight-bold" style="font-size: 20px;">Tanggal</label>
-                                                <input type="email" class="form-control" readonly name="email" value="<?= $u->email ?>" id="exampleInputPassword1">
+                                                <label for="foto" class="label-font-register">Foto Kegiatan (maksimal berukuran 4mb)</label>
+												<input type="file" name="foto" class="form-control effect-9" id="foto" accept="image/*" required>
+                                                <?= form_error('foto', '<small class="text-danger">', '</small>'); ?>
                                             </div>
-                                            <input type="submit" value="Update ⭢" class="btn btn-success btn-block">
-                                        </div>
-                                    <?php } ?>
-                                </form>
+                                            <div class="form-group">
+                                                <label for="email" class="label-font-register">Tanggal</label>
+                                                <input type="text" class="form-control" name="email" id="email" value="<?= set_value('email'); ?>">
+                                                <?= form_error('email', '<small class="text-danger">', '</small>'); ?>
+                                            </div>
+                                            <div class="form-row">
+                                                <div class="form-group col-md-6">
+                                                    <label for="password" class="label-font-register">Divisi</label>
+                                                    <input type="Text" class="form-control" name="is_active" id="password">
+                                                    <?= form_error('is_active', '<small class="text-danger">', '</small>'); ?>
+                                                </div>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input checkbox" type="checkbox" id="defaultCheck1" onchange="document.getElementById('btnsubmit').disabled = !this.checked;">
+                                                <label class=" form-check-label" for="defaultCheck1">
+                                                    Saya setuju dan ingin melanjutkan
+                                                </label>
+                                            </div>
+                                            <p class="terms">Dengan mendaftar anda menyetujui <i>privasi dan persyaratan ketentuan
+                                            hukum kami </i>
+                                            baca selengkapnya <a href="#"> disini</a></p>
+                                            <div class="form-group">
+                                                <button type="submit" class="btn btn-success btn-lg btn-block">
+                                                    Daftar ⭢
+                                                </button>
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
                             </section>
                         </div>
                     </div>
                 </div>
                 <!-- End Main Content -->
 
+
                 <!-- Start Footer -->
                 <footer class="main-footer">
                     <div class="text-center">
-                        Copyright &copy; 2021 <div class="bullet"></div><a href="#">Jordan</a>
+                        Copyright &copy; 2021 <div class="bullet"></div><a href="https://github.com/syauqi">Saiful Anam</a>
                     </div>
                 </footer>
                 <!-- End Footer -->
+
 
                 <!-- General JS Scripts -->
                 <script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>

@@ -32,7 +32,7 @@ guru dapat terus belajar dan mengajar dimana saja dan kapan saja.
                     <h6 class="footer_title">Masuk - Sign in</h6>
                     <ul class="list">
                         <li><a href="#" data-toggle="modal" data-target="#exampleModalCenter">Untuk Siswa</a></li>
-                        <li><a href="<?= base_url('welcome/guru') ?>">Untuk Guru</a></li>
+                        <li><a href="<?= base_url('welcome/user') ?>">Untuk Guru</a></li>
                         <li><a href="<?= base_url('welcome/admin') ?>">Untuk Admin</a></li>
                     </ul>
                 </div>

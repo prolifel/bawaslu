@@ -1,18 +1,30 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" style="scroll-behavior: smooth">
 
 <head>
+
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-	<title>Admin Dashboard</title>
+	<title>Update Data Kegiatan</title>
 	<!-- General CSS Files -->
 	<link rel="icon" href="<?= base_url('assets/') ?>img/bawaslu.png" type="image/png">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" <!-- Template CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.1.3/css/bootstrap.css">
+	<link rel="stylesheet" href="https://cdn.datatables.net/1.10.20/css/dataTables.bootstrap4.min.css">
+	<!-- Template CSS -->
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
+
+	<style>
+		.card-img-top {
+			width: 100%;
+			height: 40vw;
+			object-fit: cover;
+		}
+	</style>
 </head>
 
 <body>
@@ -62,14 +74,14 @@
 					</div>
 					<!-- Menu sidebar -->
 					<ul class="sidebar-menu">
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a href="<?= base_url('admin') ?>" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
 						</li>
 						<li class="menu-header">Manajemen</li>
 						<li class="nav-item">
 							<a href="<?= base_url('admin/data_user') ?>" class="nav-link"><i class="fas fa-chalkboard-teacher"></i><span>User</span></a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active">
 							<a href="<?= base_url('admin/data_kegiatan') ?>" class="nav-link"><i class="fas fa-clipboard-list"></i><span>Kegiatan</span></a>
 						</li>
 						<li class="nav-item">
@@ -86,99 +98,82 @@
 			<!-- Main Content -->
 			<div class="main-content">
 				<section class="section">
-					<div class="section-header">
-						<h1 style="font-size: 27px; letter-spacing:-0.5px; color:black;">Dashboard</h1>
-					</div>
-					<div class="row">
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<div class="card card-statistic-1">
-								<div class="card-icon bg-primary">
-									<i class="far fa-user"></i>
-								</div>
-								<div class="card-wrap">
-									<div class="card-header">
-										<h4>Kegiatan</h4>
-									</div>
-									<div class="card-body">
-										<?php echo $this->db->count_all('kegiatan'); ?>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<div class="card card-statistic-1">
-								<div class="card-icon bg-danger">
-									<i class="fas fa-chalkboard-teacher"></i>
-								</div>
-								<div class="card-wrap">
-									<div class="card-header">
-										<h4>User</h4>
-									</div>
-									<div class="card-body">
-										<?php echo $this->db->count_all('user'); ?>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<div class="card card-statistic-1">
-								<div class="card-icon bg-warning">
-									<i class="fas fa-book"></i>
-								</div>
-								<div class="card-wrap">
-									<div class="card-header">
-										<h4>Divisi</h4>
-									</div>
-									<div class="card-body">
-										<?php echo $this->db->count_all('divisi'); ?>
-									</div>
-								</div>
-							</div>
-						</div>
-
-					</div>
 					<div class="">
 						<div class="card" style="width:100%;">
 							<div class="card-body">
-
+								<h2 class="card-title" style="color: black;">Update Kegiatan</h2>
 								<hr>
-								<p class="card-text">After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? who's responsible for the ask for this request? but moving the goalposts gain traction.</p>
-
+								<p class="card-text">After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? who's responsible for the ask for this request? but moving the goalposts gain traction.
+								</p>
+								<a href="#detail" class="btn btn-success">Saya paham dan
+									ingin melanjutkan ⭢</a>
 							</div>
 						</div>
 					</div>
-					<div class="">
-						<div class="hero text-white hero-bg-image" data-background="<?= base_url('assets/') ?>stisla-assets/img/unsplash/eberhard-grossgasteiger-1207565-unsplash.jpg">
-							<div class=" hero-inner">
-								<h1>Selamat Datang, <?php
-													$data['user'] = $this->db->get_where('admin', ['email' =>
-													$this->session->userdata('email')])->row_array();
-													echo $data['user']['username'];
-													?>!</h1>
-								<p class="lead">After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? but moving the goalposts gain traction.</p>
-								<div class="mt-4">
+					<form action="<?= base_url('admin/kegiatan_edit') ?>" enctype="multipart/form-data" method="post">
+						<?php foreach ($user as $u) { ?>
+							<div class="card" style="width: 100%;;">
+								<img class="card-img-top" src="<?= base_url() . $u->image; ?>" alt="Detail gambar">
+								<div class="card-body" id="detail">
+									<h5 class="card-title">Update Data Kegiatan</h5>
+									<p class="card-text">Silahkan isi data dibawah untuk update
+										data, dan upload file diatas untuk update data profile picture</p>
+									<hr>
+									<div class="form-group">
+										<input type="hidden" name="id" value="<?= $u->id ?>">
+										<input type="hidden" name="imageLama" value="<?= $u->image?>">
 
+										<div class="form-group">
+											<label for="nama" class="label-font-register">Nama Kegiatan</label>
+											<input type="text" autocomplete="off" class="form-control effect-9" name="nama" id="nama" value="<?= $u->nama ?>">
+											<?= form_error('nama', '<small class="text-danger">', '</small>'); ?>
+										</div>
+										<div class="form-group">
+											<label for="foto" class="label-font-register">Foto Kegiatan (maksimal berukuran 4mb)</label>
+											<input type="file" name="foto" class="form-control effect-9" id="foto" accept="image/*">
+											<small>Apabila tidak ingin mengubah gambar, tidak perlu unggah foto kegiatan.</small>
+										</div>
+										<div class="form-group">
+											<!-- TODO: Masukin select tanggal -->
+											<label for="tanggal" class="label-font-register">Tanggal</label>
+											<input type="text" class="form-control" name="tanggal" id="tanggal" value="<?= $u->tanggal ?>">
+											<?= form_error('tanggal', '<small class="text-danger">', '</small>'); ?>
+										</div>
+										<div class="form-row">
+											<div class="form-group col-md-6">
+												<label for="divisi" class="label-font-register">Divisi</label>
+												<input type="Text" class="form-control" name="divisi" id="divisi" value="<?= $u->divisi?>">
+												<?= form_error('divisi', '<small class="text-danger">', '</small>'); ?>
+											</div>
+										</div>
+									</div>
+									<input type="submit" value="Update ⭢" class="btn btn-success btn-block">
 								</div>
 							</div>
-						</div>
-					</div>
+						<?php } ?>
+					</form>
 				</section>
 			</div>
-
-			<!-- Start Footer -->
-			<footer class="main-footer">
-				<div class="text-center">
-					Copyright &copy; 2021 <div class="bullet"></div><a href="#">Jordan</a>
-				</div>
-			</footer>
-			<!-- End Footer -->
-
 		</div>
 	</div>
 	<!-- End Main Content -->
 
+	<!-- Start Footer -->
+	<footer class="main-footer">
+		<div class="text-center">
+			Copyright &copy; 2021 <div class="bullet"></div><a href="#">Jordan</a>
+		</div>
+	</footer>
+	<!-- End Footer -->
+
 	<!-- General JS Scripts -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
+	<script>
+		$('.custom-file-input').on('change', function() {
+			let fileName = $(this).val().split('\\').pop();
+			$(this).next('.custom-file-label').addClass("selected").html(fileName);
+		});
+	</script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous">
 	</script>
 	<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous">
@@ -186,9 +181,18 @@
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.nicescroll/3.7.6/jquery.nicescroll.min.js"></script>
 	<script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/stisla.js"></script>
+	<!-- JS Libraies -->
+	<script src="https://cdn.datatables.net/1.10.20/js/jquery.dataTables.min.js"></script>
+	<script src="https://cdn.datatables.net/1.10.20/js/dataTables.bootstrap4.min.js"></script>
+	<script>
+		$(document).ready(function() {
+			$('#example').DataTable();
+		});
+	</script>
 	<!-- Template JS File -->
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
+	<!-- Page Specific JS File -->
 </body>
 
 </html>

@@ -4,15 +4,17 @@
 <head>
 	<meta charset="UTF-8">
 	<meta content="width=device-width, initial-scale=1, maximum-scale=1, shrink-to-fit=no" name="viewport">
-	<title>Admin Dashboard</title>
+	<title>Tentang Bawaslu</title>
 	<!-- General CSS Files -->
 	<link rel="icon" href="<?= base_url('assets/') ?>img/bawaslu.png" type="image/png">
 	<link href="https://fonts.googleapis.com/css2?family=Roboto:wght@500;700;900&display=swap" rel="stylesheet">
 	<link href="https://fonts.googleapis.com/css?family=Poppins:500,600,700&display=swap" rel="stylesheet">
 	<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
-	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous" <!-- Template CSS -->
+	<link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr" crossorigin="anonymous">
+	<!-- Template CSS -->
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/style.css">
 	<link rel="stylesheet" href="<?= base_url('assets/') ?>stisla-assets/css/components.css">
+	<script src="//cdn.jsdelivr.net/npm/afterglowplayer@1.x"></script>
 </head>
 
 <body>
@@ -62,7 +64,7 @@
 					</div>
 					<!-- Menu sidebar -->
 					<ul class="sidebar-menu">
-						<li class="nav-item active">
+						<li class="nav-item">
 							<a href="<?= base_url('admin') ?>" class="nav-link"><i class="fas fa-desktop"></i><span>Dashboard</span></a>
 						</li>
 						<li class="menu-header">Manajemen</li>
@@ -75,7 +77,7 @@
 						<li class="nav-item">
 							<a href="<?= base_url('admin/data_divisi') ?>" class="nav-link"><i class="fas fa-book"></i><span>Divisi</span></a>
 						</li>
-						<li class="nav-item">
+						<li class="nav-item active">
 							<a href="<?= base_url('admin/about_bawaslu') ?>" class="nav-link"><i class="fas fa-address-card"></i><span>Tentang Bawaslu</span></a>
 						</li>
 					</ul>
@@ -87,83 +89,26 @@
 			<div class="main-content">
 				<section class="section">
 					<div class="section-header">
-						<h1 style="font-size: 27px; letter-spacing:-0.5px; color:black;">Dashboard</h1>
+						<h1 style="font-size: 27px; letter-spacing:-0.5px; color:black;">Tentang Project BAWASLU </h1>
 					</div>
-					<div class="row">
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<div class="card card-statistic-1">
-								<div class="card-icon bg-primary">
-									<i class="far fa-user"></i>
-								</div>
-								<div class="card-wrap">
-									<div class="card-header">
-										<h4>Kegiatan</h4>
-									</div>
-									<div class="card-body">
-										<?php echo $this->db->count_all('kegiatan'); ?>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<div class="card card-statistic-1">
-								<div class="card-icon bg-danger">
-									<i class="fas fa-chalkboard-teacher"></i>
-								</div>
-								<div class="card-wrap">
-									<div class="card-header">
-										<h4>User</h4>
-									</div>
-									<div class="card-body">
-										<?php echo $this->db->count_all('user'); ?>
-									</div>
-								</div>
-							</div>
-						</div>
-						<div class="col-lg-4 col-md-6 col-sm-6 col-12">
-							<div class="card card-statistic-1">
-								<div class="card-icon bg-warning">
-									<i class="fas fa-book"></i>
-								</div>
-								<div class="card-wrap">
-									<div class="card-header">
-										<h4>Divisi</h4>
-									</div>
-									<div class="card-body">
-										<?php echo $this->db->count_all('divisi'); ?>
-									</div>
-								</div>
-							</div>
-						</div>
-
+					<div class="">
+						<video class="afterglow" autoplay id="myvideo" width="1280" height="720">
+							<source type="video/mp4" src="<?= base_url('assets/') ?>profilbawaslu.mkv" />
+						</video>
 					</div>
+					<br>
 					<div class="">
 						<div class="card" style="width:100%;">
 							<div class="card-body">
-
+								<h2 class="card-title" style="color: black;">Tentang Bawaslu</h2>
 								<hr>
-								<p class="card-text">After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? who's responsible for the ask for this request? but moving the goalposts gain traction.</p>
-
-							</div>
-						</div>
-					</div>
-					<div class="">
-						<div class="hero text-white hero-bg-image" data-background="<?= base_url('assets/') ?>stisla-assets/img/unsplash/eberhard-grossgasteiger-1207565-unsplash.jpg">
-							<div class=" hero-inner">
-								<h1>Selamat Datang, <?php
-													$data['user'] = $this->db->get_where('admin', ['email' =>
-													$this->session->userdata('email')])->row_array();
-													echo $data['user']['username'];
-													?>!</h1>
-								<p class="lead">After I ran into Helen at a restaurant, I realized she was just office pretty drop-dead date put in in a deck for our standup today. Who's responsible for the ask for this request? but moving the goalposts gain traction.</p>
-								<div class="mt-4">
-
-								</div>
+								<p class="card-text">Web Edukasi Open Source yang dibuat oleh Herman Jordan DKK. <br> BAWASLU adalah Web edukasi yang dilengkapi video, materi dan sistem ujian yang tersedia secara gratis. <br> Bawaslu dibuat ditujukan agar para pengguna dapat terus belajar dan mengajar dimana saja dan kapan saja. </p>
 							</div>
 						</div>
 					</div>
 				</section>
 			</div>
+			<!-- End Main Content -->
 
 			<!-- Start Footer -->
 			<footer class="main-footer">
@@ -175,7 +120,6 @@
 
 		</div>
 	</div>
-	<!-- End Main Content -->
 
 	<!-- General JS Scripts -->
 	<script src="https://code.jquery.com/jquery-3.3.1.min.js" integrity="sha256-FgpCb/KJQlLNfOu91ta32o/NMZxltwRo8QtmkMRdAu8=" crossorigin="anonymous"></script>
@@ -189,6 +133,7 @@
 	<!-- Template JS File -->
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/scripts.js"></script>
 	<script src="<?= base_url('assets/') ?>stisla-assets/js/custom.js"></script>
+	<!-- Page Specific JS File -->
 </body>
 
 </html>
